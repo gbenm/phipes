@@ -1,0 +1,17 @@
+{
+    "name": "gbenm/pihpes",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Gbenm\\Pihpes\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Benyamin Galeano",
+            "email": "benyamin.galeano@gmail.com"
+        }
+    ],
+    "require": {}
+}
