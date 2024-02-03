@@ -2,6 +2,7 @@
 
 namespace Gbenm\Phipes;
 
+/** @param (callable($value, [$key]): mixed) $fn  */
 function map(callable $fn): callable
 {
     return function (iterable $iterable) use ($fn): iterable {
@@ -11,6 +12,7 @@ function map(callable $fn): callable
     };
 }
 
+/** @param (callable($key, $value): [$key, $value]) $fn */
 function mapKeyAndValue(callable $fn): callable
 {
     return function (iterable $iterable) use ($fn): iterable {
@@ -30,6 +32,7 @@ function ignoreKeys(): callable
     };
 }
 
+/** @param (callable($value, [$key]): mixed) $predicate */
 function filter(callable $predicate): callable
 {
     return function (iterable $iterable) use ($predicate): iterable {

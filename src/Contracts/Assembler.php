@@ -3,9 +3,9 @@
 namespace Gbenm\Phipes\Contracts;
 
 /**
- * @method static map((callable($value, $key): mixed) $fn)
+ * @method static map((callable($value, [$key]): mixed) $fn)
  * @method static mapKeyAndValue((callable($key, $value): [$key, $value]) $fn)
- * @method static filter((callable($value, $key): mixed) $fn)
+ * @method static filter((callable($value, [$key]): mixed) $predicate)
  * @method static ignoreKeys()
  */
 abstract class Assembler
@@ -53,6 +53,12 @@ abstract class Assembler
 
     public function __call($name, $arguments)
     {
-        return $this->pipe(("\\Gbenm\\Phipes\\$name")(...$arguments));
+        $function = "\\Gbenm\\Phipes\\$name";
+
+        if (!function_exists($function)) {
+            throw new \BadMethodCallException("Method $name does not exist");
+        }
+
+        return $this->pipe($function(...$arguments));
     }
 }
