@@ -3,7 +3,6 @@
 namespace Gbenm\Phipes;
 
 use Gbenm\Phipes\Contracts\Assembler;
-use Gbenm\Phipes\Contracts\Transformer;
 use Generator;
 
 class Stream extends Assembler
@@ -44,6 +43,8 @@ class Stream extends Assembler
 
     public function pipe(callable $transformer): self
     {
+        $this->assertValidTransformer($transformer);
+
         $this->currentIterable = $transformer($this->currentIterable);
         return $this;
     }
