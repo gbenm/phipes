@@ -1,11 +1,14 @@
 {
-    "name": "gbenm/pihpes",
+    "name": "gbenm/phipes",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Gbenm\\Pihpes\\": "src/"
-        }
+            "Gbenm\\Phipes\\": "src/"
+        },
+        "files": [
+            "src/transformers.php"
+        ]
     },
     "authors": [
         {
@@ -13,5 +16,7 @@
             "email": "benyamin.galeano@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7"
+    }
 }
