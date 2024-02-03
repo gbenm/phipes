@@ -1,6 +1,6 @@
 <?php
 
-namespace Gbenm\Phipes\Contracts;
+namespace Phipes\Contracts;
 
 /**
  * @method static map((callable($value, [$key]): mixed) $fn)
@@ -18,7 +18,7 @@ abstract class Assembler
 
     public function __call($name, $arguments)
     {
-        $function = "\\Gbenm\\Phipes\\$name";
+        $function = "\\Phipes\\Transformers\\$name";
 
         if (!function_exists($function)) {
             throw new \BadMethodCallException("Method $name does not exist");

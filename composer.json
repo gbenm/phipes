@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Gbenm\\Phipes\\": "src/"
+            "Phipes\\": "src/"
         },
         "files": [
             "src/Transformers/common.php"

@@ -1,6 +1,6 @@
 <?php
 
-namespace Gbenm\Phipes;
+namespace Phipes;
 
 class PipelineExecutor
 {

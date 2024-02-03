@@ -1,8 +1,8 @@
 <?php
 
-namespace Gbenm\Phipes;
+namespace Phipes;
 
-use Gbenm\Phipes\Contracts\Assembler;
+use Phipes\Contracts\Assembler;
 use Generator;
 
 class Stream extends Assembler
