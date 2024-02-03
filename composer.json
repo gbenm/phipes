@@ -7,7 +7,7 @@
             "Gbenm\\Phipes\\": "src/"
         },
         "files": [
-            "src/transformers.php"
+            "src/Transformers/common.php"
         ]
     },
     "authors": [

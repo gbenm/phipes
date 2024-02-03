@@ -43,7 +43,7 @@ class Stream extends Assembler
 
     public function pipe(callable $transformer): self
     {
-        $this->assertValidTransformer($transformer);
+        Pipeline::assertValidTransformer($transformer);
 
         $this->currentIterable = $transformer($this->currentIterable);
         return $this;

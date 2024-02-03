@@ -1,6 +1,6 @@
 <?php
 
-namespace Gbenm\Phipes;
+namespace Gbenm\Phipes\Transformers;
 
 /** @param (callable($value, [$key]): mixed) $fn  */
 function map(callable $fn): callable
