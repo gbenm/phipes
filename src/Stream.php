@@ -37,12 +37,12 @@ class Stream extends Assembler
         }
     }
 
-    public function __invoke(Transformer $transformer): self
+    public function __invoke(callable $transformer): self
     {
         return $this->pipe($transformer);
     }
 
-    public function pipe(Transformer $transformer): self
+    public function pipe(callable $transformer): self
     {
         $this->currentIterable = $transformer($this->currentIterable);
         return $this;

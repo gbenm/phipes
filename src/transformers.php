@@ -2,54 +2,40 @@
 
 namespace Gbenm\Phipes;
 
-use Gbenm\Phipes\Contracts\Transformer;
-
-function map(callable $fn): Transformer
+function map(callable $fn): callable
 {
-    return new class ($fn) extends TransformerFunction {
-        public function transform(callable $fn, iterable $iterable): iterable
-        {
-            foreach ($iterable as $key => $item) {
-                yield $key => call_user_func($fn, $item, $key);
-            }
+    return function ($iterable) use ($fn) {
+        foreach ($iterable as $key => $item) {
+            yield $key => call_user_func($fn, $item, $key);
         }
     };
 }
 
-function mapKeyAndValue(callable $fn): Transformer
+function mapKeyAndValue(callable $fn): callable
 {
-    return new class ($fn) extends TransformerFunction {
-        public function transform(callable $fn, iterable $iterable): iterable
-        {
-            foreach ($iterable as $key => $item) {
-                [$newKey, $newValue] = call_user_func($fn, $key, $item);
-                yield $newKey => $newValue;
-            }
+    return function ($iterable) use ($fn) {
+        foreach ($iterable as $key => $item) {
+            [$newKey, $newValue] = call_user_func($fn, $key, $item);
+            yield $newKey => $newValue;
         }
     };
 }
 
-function ignoreKeys(): Transformer
+function ignoreKeys(): callable
 {
-    return new class implements Transformer {
-        public function __invoke(iterable $iterable): iterable
-        {
-            foreach ($iterable as $item) {
-                yield $item;
-            }
+    return function ($iterable) {
+        foreach ($iterable as $item) {
+            yield $item;
         }
     };
 }
 
-function filter(callable $predicate): Transformer
+function filter(callable $predicate): callable
 {
-    return new class ($predicate) extends TransformerFunction {
-        public function transform(callable $fn, iterable $iterable): iterable
-        {
-            foreach ($iterable as $key => $item) {
-                if (call_user_func($fn, $item, $key)) {
-                    yield $key => $item;
-                }
+    return function ($iterable) use ($predicate) {
+        foreach ($iterable as $key => $item) {
+            if (call_user_func($predicate, $item, $key)) {
+                yield $key => $item;
             }
         }
     };
