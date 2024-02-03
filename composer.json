@@ -1,5 +1,7 @@
 {
     "name": "gbenm/phipes",
+    "description": "A simple library for transforming iterables",
+    "keywords": ["transform", "iterable", "array", "collection", "map", "filter", "reduce", "transformer", "pipe", "pipeline", "stream"],
     "type": "library",
     "license": "MIT",
     "autoload": {
