@@ -44,7 +44,7 @@ $result = Pipeline::for($someIterable)
 
 // Creating a pipeline
 
-$pipeline = Pipeline::build()
+$pipeline = Pipeline::builder()
     ->filter($isOdd)
     ->map($mulByThree)
     ->map($addTwo)
